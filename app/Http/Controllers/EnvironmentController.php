@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 class EnvironmentController extends Controller
@@ -13,8 +14,9 @@ class EnvironmentController extends Controller
      */
     public function index()
     {
+        $tenants = Tenant::all();
 
-        return view('environments.index', ['environments' => []]);
+        return view('environments.index', ['environments' => $tenants]);
     }
 
     /**
