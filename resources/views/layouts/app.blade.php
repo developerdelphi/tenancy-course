@@ -17,9 +17,10 @@
         <main class="container mx-auto pt-8 flex flex-col ">
             @yield('content')
         </main>
-        <footer class="text-center text-white" style="background-color: #f1f1f1;">
-            <div class="container pt-9">
-                <div class="flex justify-center mb-9">
+        <footer class="text-center text-white fixed inset-x-0 bottom-0 flex flex-col"
+            style="background-color: #f1f1f1;">
+            <div class="bg-gray-200 py-2 mx-auto">
+                <div class="flex justify-center">
                     <a href="#!" class="mr-9 text-gray-800">
                         <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
                             class="svg-inline--fa fa-facebook-f w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -77,8 +78,7 @@
                 </div>
             </div>
 
-            <div class="text-center text-gray-700 p-4 fixed inset-x-0 bottom-0"
-                style="background-color: rgba(0, 0, 0, 0.2);">
+            <div class="text-center text-gray-700 p-4 " style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2021 Copyright:
                 <a class="text-gray-800" href="https://tailwind-elements.com/">Tailwind Elements</a>
             </div>
