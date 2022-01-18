@@ -52,7 +52,7 @@ return [
          * prefix + tenant_id + suffix.
          */
         'prefix' => 'tenant',
-        'suffix' => '',
+        'suffix' => '_',
 
         /**
          * TenantDatabaseManagers are classes that handle the creation & deletion of tenant databases.
