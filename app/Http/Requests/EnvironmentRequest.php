@@ -24,7 +24,8 @@ class EnvironmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'min:3', 'max:100', 'unique:tenants,id'],
+            'id' => ['required', 'min:3', 'max:100', 'unique:tenants,id', 'regex:/^[\pL\s\-]+$/u'],
+            // 'regex:/\s+/',],
             'domain' => ['required', 'min:3', 'max:100', 'unique:domains,domain']
         ];
     }
@@ -36,6 +37,7 @@ class EnvironmentRequest extends FormRequest
             'id.min' => 'A identificação do Ambiente é muito pequena',
             'id.max' => 'A identificação do Ambiente deve conter até 100 caracteres',
             'id.unique' => 'A identificação do escolhida está em uso no sistema',
+            'id.regex' => 'A identificação não deve conter espaços em branco',
             'domain.required' => 'Identifique o domínio no sistema',
             'domain.min' => 'A identificação do domínio parece ser muito curta',
             'domain.max' => 'A identificação do domínio deve conter até 100 caracteres',
