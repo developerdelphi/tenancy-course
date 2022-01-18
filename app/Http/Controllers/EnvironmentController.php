@@ -14,7 +14,8 @@ class EnvironmentController extends Controller
      */
     public function index()
     {
-        $tenants = Tenant::all();
+        $tenants = Tenant::with('domains')->get();
+        // dd($tenants);
 
         return view('environments.index', ['environments' => $tenants]);
     }
@@ -26,7 +27,7 @@ class EnvironmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('environments.form');
     }
 
     /**
@@ -37,7 +38,13 @@ class EnvironmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /** Procedimento que cria o tenant e dispara events para crição
+         * de BD, Migrations e Seeds
+         */
+        $tenant = Tenant::create(['id' => $request->input('id')]);
+        $tenant->domains->create(['domain' => $request->input('domain')]);
+
+        return redirect()->route('environments.index');
     }
 
     /**
