@@ -14,13 +14,13 @@ Lista de Ambientes
 @endsection
 
 @section('content')
-<div>
+<div class="m-4">
     <h1 class="text-3xl h-20 font-bold">Lista de Ambientes</h1>
     <div>
         @forelse ($environments as $environment )
         <div class="flex flex-row items-center p-2 border shadow justify-between">
             <h3 class="text-lg font-semibold p-4">{{ $environment->id }}</h3>
-            <div class="grid grid-cols-3 gap-2 w-1/2 items-center justify-between ">
+            <div class="flex gap-2 items-center justify-between ">
                 <div>
                     Database:{{ $environment->tenancy_db_name }}
                 </div>
