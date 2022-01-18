@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EnvironmentRequest;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 
@@ -36,13 +37,13 @@ class EnvironmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EnvironmentRequest $request)
     {
         /** Procedimento que cria o tenant e dispara events para crição
          * de BD, Migrations e Seeds
          */
         $tenant = Tenant::create(['id' => $request->input('id')]);
-        $tenant->domains->create(['domain' => $request->input('domain')]);
+        $tenant->domains()->create(['domain' => $request->input('domain')]);
 
         return redirect()->route('environments.index');
     }
@@ -89,6 +90,10 @@ class EnvironmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $tenant = Tenant::find($id);
+        // dd($tenant);
+        $tenant->delete();
+        return redirect()->route('environments.index');
     }
 }
